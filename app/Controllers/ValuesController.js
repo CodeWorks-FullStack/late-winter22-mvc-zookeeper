@@ -10,13 +10,18 @@ function _draw() {
   values.forEach(v => cardsTemplate += v.CardTemplate)
   document.getElementById("app").innerHTML = /*html*/`
   <div class="my-3">
-    <button class="btn btn-secondary text-white elevation-2" onclick="app.valuesController.addValue()">Add Value</button>  
+    <button class="btn btn-secondary text-white elevation-2" onclick="app.valuesController.addCount()">Add Value</button>  
+    <button class="btn btn-secondary text-white elevation-2" onclick="app.valuesController.sayHelloToAnimals()">Hi Animals</button> 
     <div class="values d-flex flex-wrap my-3">
       ${cardsTemplate}
     </div>
   </div>
   `
 }
+
+
+let count = 0
+
 
 //Public
 export class ValuesController {
@@ -25,6 +30,17 @@ export class ValuesController {
     _draw()
   }
 
+  addCount(){
+    if(count == 0 ){
+      count +=100
+    }
+    count++
+    console.log(count)
+  }
+
+  sayHelloToAnimals(){
+    valuesService.sayHelloToAnimals()
+  }
   addValue() {
     valuesService.addValue()
   }
